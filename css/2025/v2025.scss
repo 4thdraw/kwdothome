@@ -1,0 +1,177 @@
+#hd{
+    .gnbwrap{
+        padding:33px 0;
+    }
+    
+    h1{
+            img{
+                max-width:180px;
+                width: 100%;
+            }
+
+                
+                }
+    .searchbox{
+        width: 450px;
+        input{
+            line-height: 26px;
+            margin-top:1px;
+        }
+
+        ::placeholder{
+            color: var(--gray--text);
+            font-size: 17px;
+            font-weight: 500;    
+            letter-spacing: -0.05em;        
+        }
+
+        
+        @media screen and (max-width: 1080px) {
+            width: auto;
+            min-width:33vw;        
+            
+        }
+        a{
+            color:var(--gray--text) !important;
+            svg{
+                width:21px;
+                height:21px;
+            }
+        }
+    }
+}
+
+#main_banner{
+    .main_swiper_2025{
+        height:460px;
+        @media screen and (max-width: 1080px) {
+            height: 100vw;
+            max-height:600px;            
+        }
+        .companyswiper{
+            background-image:url(../../img/2025/main/banner/swiper0.jpg);
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center 70%;            
+        }
+        .eventswiper{
+            background-image:url(../../img/2025/main/banner/swiper1.jpg);
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center 70%;            
+        }
+        .qnaswiper{
+            background-image:url(../../img/2025/main/banner/swiper2.jpg);
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center 70%;            
+        }
+        .btn{
+            padding: 12px 21px;
+        }
+
+        .title_01{
+            opacity:0;
+            transform: translateY(-30%);
+            transition: 0.8s;
+            transition-delay: 0.5s;            
+
+        }
+        .title_02{
+            opacity: 0;
+            transform: translateY(-15%);
+            transition: 0.8s;
+            transition-delay: 1s;            
+
+        }
+        .title_03{
+            opacity: 0;
+            transform: translateY(15%);
+            transition: 0.8s;
+            transition-delay: 1.5s;            
+
+        }
+        .swiper-slide-active{
+            .title_01,
+            .title_02,
+            .title_03{
+                opacity: 1;
+                transform: translateY(0);                          
+
+            }
+        }
+        .swiper-pagination{
+            bottom:1rem;
+        }
+        .swiper-pagination-bullet{
+            width:15px !important;
+            height:15px !important;
+        }
+    }
+}
+#privateQna{
+    i{
+        svg{
+            width: 24px;
+            height: 28px;
+        }
+    }
+}
+
+#footer_custom{
+    i{
+        &.tel-icon{
+            svg{
+                width:28px;
+                height:28px;
+            }
+        }
+        &.bank-icon{
+            svg{
+                width:33px;
+            height:26px;
+            }
+        }
+        
+        
+    }
+    .guide-info{
+        .kbcolor{
+            color: #5f5233 !important;
+        }
+
+    }
+    .contact-info{
+        i{
+            svg{
+                width:24px;
+                height:24px;
+            }
+        }
+    }
+}
+#ft{
+    .logo{
+        svg{
+            max-width:130px;
+        }
+    }
+    .certification{
+        img{
+            max-height:37px;
+            .ssl{
+                max-width:110px;
+                width:20vw;
+            }
+            .ct{
+                max-width: 100px;
+                width: 18vw;
+            }
+        }
+    }
+    .admin_a{
+        width:30px;
+        height:30px;        
+    }
+}
+
