@@ -1,28 +1,21 @@
 
-	
-<?php
-   define('KW_PATH',$_SERVER['DOCUMENT_ROOT']);
-    // 웹 브라우저용 URL 경로
-	$host = $_SERVER['HTTP_HOST'];
-	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
-	define('KW_URL', $protocol . $host);
-?>
+
 <div id="wrap" >
 <!--상단-->
 
 
- <header id="hd">
-        <div class="ad d-flex justify-content-center active-bg text-white fw400 fs-13  line-height-1 py-2">
+ <header id="hd" class='position-relative bg-white'>
+        <div class="ad d-flex justify-content-center active-bg text-white fw400 fs-14  line-height-1 py-2">
             <p class="py-1 d-flex gap-2">
                 Since 2004 <span class="bar bg-white"></span> 
                 누적시공 4500건 이상 <span class="bar bg-white"></span> 
                 <strong class="fw500">바닥재 판매 · 시공전문 </strong>
             </p>
         </div>
-         <div class="max-width mx-auto d-flex justify-content-between align-items-center gnbwrap"> 
-            <h1 class="w-0"><a href="/index_2025.html">                   
+         <div class="max-width mx-auto d-none d-xl-flex justify-content-between align-items-center gnbwrap"> 
+            <h1 class="w-0"><a href="<?php echo $kw_url; ?>/main/main_2025.php">                   
                
-			<?php include(KW_PATH."/img/2025/logo/mainlogo.html"); ?>
+			<?php include($kw_path."/img/2025/logo/mainlogo.html"); ?>
 				
             </a></h1>
             <div class="searchbox border rounded-3 px-3 py-2 border-gray bg-white shadow-sm">
@@ -46,32 +39,84 @@
             </h2>
         </div>
 	
-			<div class="menu  border-top border-bottom  py-1 ">
-                <ul class="mx-auto max-width py-2 navilist fw600 fs-20 d-flex justify-content-between align-items-center">
+			<div class="menu  border-top border-bottom py-2 py-xl-1 bg-white px-3 px-xl-0">
+				<h1 class='m_logo h-0 d-flex d-xl-none justify-content-center align-items-center position-absolute top-50 start-0 w-100 z-up'>
+					<a href="<?php echo $kw_url; ?>/main/main_2025.php" class='d-flex'>
+						<?php include($kw_path."/img/2025/logo/mainlogo.html"); ?>
+					</a>                         
+				</h1>
+                <ul class="mx-auto max-width py-2 navilist fw600 fs-18 d-flex justify-content-between align-items-center">
                       <li id="allmenu" class="navili">
-						<a href="#allNavi" class="d-flex flex-column align-items-center" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="allNavi">
+						<a href="#navi_open" onclick="toggleBodyClassFromElement(this)" data-body-cls="nav_open" class="d-flex flex-column align-items-center" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="allNavi">
 							
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<svg xmlns="http://www.w3.org/2000/svg" class='o' width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 								<line x1="3" y1="12" x2="21" y2="12"></line>
 								<line x1="3" y1="6" x2="21" y2="6"></line>
 								<line x1="3" y1="18" x2="21" y2="18"></line>
 							</svg>
+							<svg xmlns="http://www.w3.org/2000/svg" class="x" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+								stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+							</svg>
+
 								<span class="visually-hidden">전체메뉴</span>
 							
 						</a>
 					  </li>
-                      <li class="navili"><a href="">제품보기</a></li>
-                      <li class="navili"><a href="">공간별추천</a></li>
-                      <li class="navili"><a href="">시공갤러리</a></li>
-                      <li class="navili"><a href="">시공가이드</a></li>
-                      <li class="navili"><a href="">주문제작</a></li>
-                      <li class="navili"><a href="" class="orange-color">견적문의</a></li>
+                      <li class="navili d-none d-xl-block"><a href="<?php echo $kw_url; ?>/page/prd_list.php?pronm=prd_all">제품보기</a></li>
+                      <li class="navili d-none d-xl-block"><a href="">공간별추천</a></li>
+                      <li class="navili d-none d-xl-block"><a href="<?php echo $kw_url; ?>/page/gallery_list.php?pronm=prd_all">시공갤러리</a></li>
+                      <!-- <li class="navili d-none d-xl-block"><a href="">시공가이드</a></li> -->
+                      <li class="navili d-none d-xl-block"><a href="">주문제작</a></li>
+                      <li class="navili d-none d-xl-block"><a href="<?php echo $kw_url; ?>/page/board_list.php?boarden=Inquiries&board=견적문의" class="orange-color">견적문의</a></li>
+					  <li class="navili searchicon d-xl-none">
+						<a href="#searchModal"  class="d-flex " >						
+							<svg xmlns="http://www.w3.org/2000/svg" class='searchsvg ' width="22" height="22" viewBox="0 0 22 22" fill="none">
+								<circle cx="13.5" cy="8.75" r="7" stroke="currentColor" stroke-width="3"/>
+								<path d="M7.5 14.75L1.5 20.75" stroke="currentColor" stroke-width="3"/>
+							</svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class='closesvg ' viewBox="0 0 24 24" fill="none">
+							<path d="M22 2L2 22" stroke="currentColor" stroke-width="3"/>
+							<path d="M22 22L2 2" stroke="currentColor" stroke-width="3"/>
+							</svg>
+									
+					    </a>
+					  </li>
                 </ul>
+				<div id='searchModal' class='modal position-absolute fade bg-white top-100 start-0 border-top w-100 border-bottom' >
 				
-			</div>
-</header>	
+					<div class="modal-content bg-white bg-opacity-75 backdrop-blur rounded-0 border-0 shadow-none">
+						<div class="modal-body d-sm-flex align-items-center justify-content-center p-5">
+
+									<form method="GET" id="topFrm" name="topFrm" class="d-flex align-items-center  border-bottom py-2" action="../product/product_search.php" onSubmit="teSearch(); return false;">				
+										<input type="text" name="ts" id="tss" class='border-0 w-100 fs-21 gmfont-m ' placeholder="검색어를 입력해주세요" value="" maxlength="50">
+										<a href="#none"  onClick="teSearch()" class="d-flex searchicon gray-text">
+											
+											<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+											<circle cx="13.5" cy="8.75" r="7" stroke="#939393" stroke-width="3"/>
+											<path d="M7.5 14.75L1.5 20.75" stroke="#939393" stroke-width="3"/>
+											</svg>			
+										</a>
+									</form>
+						</div>
+					</div>
+			
+			    </div>	
+
+				
+				
+				
+				<?php include_once($kw_path.'/inc/allNavi.php'); ?>		
+			</div>		
+			
+ </header>	
+
+ 
 		
 		<script type="text/javascript">
+			
+
 			function teSearch() {
 				if(document.getElementById("ts").value.length<1) {
 					alert('검색어를 한글자 이상 입력해주세요');
@@ -80,7 +125,7 @@
 				}
 				document.getElementById('topFrm').submit();
 			}
-			</script>
+		</script>
 		
 
 	
