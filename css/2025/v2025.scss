@@ -67,6 +67,17 @@
                 }
             }
         }
+        .gnb_dom{
+            z-index: 101;
+            position: relative;
+
+        }
+        .subpage_submenu{
+                transform: translateY(0);
+                transition: transform 0.5s;
+                z-index: 100;
+               
+        }
         
         .searchicon{
               
@@ -104,6 +115,21 @@
             }
         &.fixed-top{
             position: fixed !important;
+            .gnb_dom{
+                border-bottom:1px solid #dee2e6;
+            }
+            
+
+            .subpage_submenu{
+                transform: translateY(-100%);
+                 .border-bottom-active{
+                    &:after{
+                        bottom:0;
+                    }
+
+                }
+                
+            }
             .searchicon{
                 @media (min-width:1280px) {
                     display: flex !important;                    
@@ -433,7 +459,8 @@
 
     }
 }
-#designGallery{   
+#designGallery,
+.caseList {   
          @media (max-width:1299px) {
             .swiper{
                 width: calc(100% - 80px);
@@ -533,7 +560,7 @@
     }
     .certification{
         img{
-            max-height:37px;
+            max-height:32px;
             height:5vw;
             @media (max-width:575px) {
                 
@@ -669,6 +696,24 @@ body{
 
     }
 
+}
+.subList{
+    .proBox3{
+        img{
+            max-width:100% !important;
+            width:100% !important;
+            height:100% !important;
+        }
+    }
+}
+
+.paging {
+    *{
+        background-color:white !important;
+    }
+    span{
+        color: var(--gray--origin) !important;
+    }
 }
 
 

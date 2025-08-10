@@ -39,51 +39,91 @@
             </h2>
         </div>
 	
-			<div class="menu  border-top border-bottom py-2 py-xl-1 bg-white px-3 px-xl-0">
-				<h1 class='m_logo h-0 d-flex d-xl-none justify-content-center align-items-center position-absolute top-50 start-0 w-100 z-up'>
-					<a href="<?php echo $kw_url; ?>/main/main_2025.php" class='d-flex'>
-						<?php include($kw_path."/img/2025/logo/mainlogo.html"); ?>
-					</a>                         
-				</h1>
-                <ul class="mx-auto max-width py-2 navilist fw600 fs-18 d-flex justify-content-between align-items-center">
-                      <li id="allmenu" class="navili">
-						<a href="#navi_open" onclick="toggleBodyClassFromElement(this)" data-body-cls="nav_open" class="d-flex flex-column align-items-center" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="allNavi">
-							
-							<svg xmlns="http://www.w3.org/2000/svg" class='o' width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<line x1="3" y1="12" x2="21" y2="12"></line>
-								<line x1="3" y1="6" x2="21" y2="6"></line>
-								<line x1="3" y1="18" x2="21" y2="18"></line>
-							</svg>
-							<svg xmlns="http://www.w3.org/2000/svg" class="x" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-								stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<line x1="18" y1="6" x2="6" y2="18"></line>
-							<line x1="6" y1="6" x2="18" y2="18"></line>
-							</svg>
+			<div class="menu">
+				<div class='border-top 
+				<?php echo defined('_PROLIST_') ? "" : "border-bottom"; ?>
+				py-2 py-xl-1 bg-white px-3 px-xl-0 gnb_dom'>
+					<h1 class='m_logo h-0 d-flex d-xl-none justify-content-center align-items-center position-absolute top-50 start-0 w-100 z-up'>
+						<a href="<?php echo $kw_url; ?>/main/main_2025.php" class='d-flex'>
+							<?php include($kw_path."/img/2025/logo/mainlogo.html"); ?>
+						</a>                         
+					</h1>
+					<ul class="mx-auto max-width py-2 navilist fw600 fs-18 d-flex justify-content-between align-items-center">
+						<li id="allmenu" class="navili">
+							<a href="#navi_open" onclick="toggleBodyClassFromElement(this)" data-body-cls="nav_open" class="d-flex flex-column align-items-center" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="allNavi">
+								
+								<svg xmlns="http://www.w3.org/2000/svg" class='o' width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<line x1="3" y1="12" x2="21" y2="12"></line>
+									<line x1="3" y1="6" x2="21" y2="6"></line>
+									<line x1="3" y1="18" x2="21" y2="18"></line>
+								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" class="x" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<line x1="18" y1="6" x2="6" y2="18"></line>
+								<line x1="6" y1="6" x2="18" y2="18"></line>
+								</svg>
 
-								<span class="visually-hidden">전체메뉴</span>
-							
-						</a>
+									<span class="visually-hidden">전체메뉴</span>
+								
+							</a>
+						</li>
+						<li class="navili d-none d-xl-block"><a href="<?php echo $kw_url; ?>/page/prd_list.php?pronm=prd_all">제품보기</a></li>
+						<li class="navili d-none d-xl-block"><a href="">공간별추천</a></li>
+						<li class="navili d-none d-xl-block"><a href="<?php echo $kw_url; ?>/page/gallery_list.php?pronm=prd_all">시공갤러리</a></li>
+						<!-- <li class="navili d-none d-xl-block"><a href="">시공가이드</a></li> -->
+						<li class="navili d-none d-xl-block"><a href="">주문제작</a></li>
+						<li class="navili d-none d-xl-block"><a href="<?php echo $kw_url; ?>/page/board_list.php?boarden=Inquiries&board=견적문의" class="orange-color">견적문의</a></li>
+						<li class="navili searchicon d-xl-none">
+							<a href="#searchModal"  class="d-flex " >						
+								<svg xmlns="http://www.w3.org/2000/svg" class='searchsvg ' width="22" height="22" viewBox="0 0 22 22" fill="none">
+									<circle cx="13.5" cy="8.75" r="7" stroke="currentColor" stroke-width="3"/>
+									<path d="M7.5 14.75L1.5 20.75" stroke="currentColor" stroke-width="3"/>
+								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class='closesvg ' viewBox="0 0 24 24" fill="none">
+								<path d="M22 2L2 22" stroke="currentColor" stroke-width="3"/>
+								<path d="M22 22L2 2" stroke="currentColor" stroke-width="3"/>
+								</svg>
+										
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<?php if(defined('_PROLIST_')){ 
+					// 제품페이지일때 노출
+					?>
+				<div class='subpage_submenu py-2 py-xl-1 bg-gray px-3 px-xl-0 top-100% position-absolute start-0 end-0 gray-bg '>
+					<ul class="mx-auto max-width  navilist fw500 fs-17 d-flex justify-content-between align-items-center ">  
+						
+					
+                      <li class="navili d-none d-xl-block">
+						<a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=carpet" class='<?php echo ($skey1 === '001') ? 'border-bottom-active active-color' : 'gray-dark'; ?>  px-lg-4 py-2' >카페트</a>
 					  </li>
-                      <li class="navili d-none d-xl-block"><a href="<?php echo $kw_url; ?>/page/prd_list.php?pronm=prd_all">제품보기</a></li>
-                      <li class="navili d-none d-xl-block"><a href="">공간별추천</a></li>
-                      <li class="navili d-none d-xl-block"><a href="<?php echo $kw_url; ?>/page/gallery_list.php?pronm=prd_all">시공갤러리</a></li>
+                      <li class="navili d-none d-xl-block">
+						<a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=003&skey2=003001&boarden=artificial_grass" class='<?php echo ($skey1 === '003') ? 'border-bottom-active active-color' : 'gray-dark'; ?>  px-lg-4 py-2'>인조잔디</a>
+					  </li>
+                      <li class="navili d-none d-xl-block">
+						<a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=002&skey2=002001&boarden=entrance_mat" class='<?php echo ($skey1 === '002') ? 'border-bottom-active active-color' : 'gray-dark'; ?>  px-lg-4 py-2'>현관매트</a>
+					  </li>
                       <!-- <li class="navili d-none d-xl-block"><a href="">시공가이드</a></li> -->
-                      <li class="navili d-none d-xl-block"><a href="">주문제작</a></li>
-                      <li class="navili d-none d-xl-block"><a href="<?php echo $kw_url; ?>/page/board_list.php?boarden=Inquiries&board=견적문의" class="orange-color">견적문의</a></li>
-					  <li class="navili searchicon d-xl-none">
-						<a href="#searchModal"  class="d-flex " >						
-							<svg xmlns="http://www.w3.org/2000/svg" class='searchsvg ' width="22" height="22" viewBox="0 0 22 22" fill="none">
-								<circle cx="13.5" cy="8.75" r="7" stroke="currentColor" stroke-width="3"/>
-								<path d="M7.5 14.75L1.5 20.75" stroke="currentColor" stroke-width="3"/>
-							</svg>
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class='closesvg ' viewBox="0 0 24 24" fill="none">
-							<path d="M22 2L2 22" stroke="currentColor" stroke-width="3"/>
-							<path d="M22 22L2 2" stroke="currentColor" stroke-width="3"/>
-							</svg>
-									
-					    </a>
+                      <li class="navili d-none d-xl-block">
+						<a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=010&skey2=010001&boarden=rubber_pvc" class='<?php echo ($skey1 === '010') ? 'border-bottom-active active-color' : 'gray-dark'; ?>  px-lg-4 py-2'>고무/PVC</a>
 					  </li>
-                </ul>
+                      <li class="navili d-none d-xl-block">
+						<a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=009&skey2=009001&boarden=preventionmat" class='<?php echo ($skey1 === '009') ? 'border-bottom-active active-color' : 'gray-dark'; ?>  px-lg-4 py-2'>피로예방매트</a>
+					  </li>
+					  <li class="navili d-none d-xl-block">
+						 <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=013&skey2=013001&boarden=multipurpose_flooring" class='<?php echo ($skey1 === '013') ? 'border-bottom-active active-color' : 'gray-dark'; ?>  px-lg-4 py-2'>LX바닥재</a>
+					  </li>
+					  <li class="navili d-none d-xl-block">
+						 <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=016&skey2=016001&boarden=subsidiary" class='<?php echo ($skey1 === '016') ? 'border-bottom-active active-color' : 'gray-dark'; ?>  px-lg-4 py-2'>부자재</a>
+					  </li>
+					 
+					 
+                	</ul>
+				</div>
+				<?php } ?>
+			
 				<div id='searchModal' class='modal position-absolute fade bg-white top-100 start-0 border-top w-100 border-bottom' >
 				
 					<div class="modal-content bg-white bg-opacity-75 backdrop-blur rounded-0 border-0 shadow-none">

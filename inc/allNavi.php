@@ -31,64 +31,74 @@
             <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=carpet" class='border-bottom' >카페트</a>
             <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="카페트 하위 메뉴">
               <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=carpet&submenu=롤카페트">롤카페트</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=carpet&submenu=타일카페트">타일카페트</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=carpet&submenu=제작카페트">제작카페트</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001002&boarden=carpet&submenu=타일카페트">타일카페트</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001003&boarden=carpet&submenu=제작카페트">제작카페트</a></li>
             </ul>
           </li>
           <li role="menuitem" class='position-relative    '>
             <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=003&skey2=003001&boarden=artificial_grass" class='border-bottom'>인조잔디</a>
             <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1'  aria-label="인조잔디 하위 메뉴">
               <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=003&skey2=003001&boarden=artificial_grass&submenu=실내용">실내용</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=003&skey2=003001&boarden=carpet&submenu=실외용">실외용</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=003&skey2=003002&boarden=carpet&submenu=실외용">실외용</a></li>
             </ul>
           </li>
           <li role="menuitem" class='position-relative      '>
             <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=002&skey2=002001&boarden=entrance_mat" class='border-bottom'>현관매트</a>
             <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="현관매트 하위 메뉴">
               <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=002&skey2=002001&boarden=entrance_mat&submenu=알루미늄매트">알루미늄매트</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=002&skey2=002001&boarden=entrance_mat&submenu=코일매트">코일매트</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=002&skey2=002002&boarden=entrance_mat&submenu=코일매트">코일매트</a></li>
             </ul>
           </li>
           <li role="menuitem" class='position-relative    '>
             <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=010&skey2=010001&boarden=rubber_pvc" class='border-bottom'>고무/PVC</a>
             <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="고무/PVC 하위 메뉴">
               <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=010001&boarden=rubber_pvc&submenu=고무매트">고무매트</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=010001&boarden=rubber_pvc&submenu=PVC타일">PVC타일</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=010002&boarden=rubber_pvc&submenu=PVC타일">PVC타일</a></li>
             </ul>
           </li>
-          <li role="menuitem" class='position-relative  '>
+          <!-- <li role="menuitem" class='position-relative  '>
             <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=industrial_mat" class='border-bottom'>산업용매트</a>
             <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="산업용매트 하위 메뉴">
               <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=industrial_mat&submenu=작업장매트">작업장매트</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=industrial_mat&submenu=논슬립매트">논슬립매트</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001002&boarden=industrial_mat&submenu=논슬립매트">논슬립매트</a></li>
             </ul>
-          </li>
-          <li role="menuitem" class='position-relative  '>
+          </li> -->
+          <!-- <li role="menuitem" class='position-relative  '>
             <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=phytex" class='border-bottom'>파이텍스</a>
             <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="파이텍스 하위 메뉴">
               <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=phytex&submenu=인테리어용">인테리어용</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=phytex&submenu=산업용">산업용</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001002&boarden=phytex&submenu=산업용">산업용</a></li>
             </ul>
-          </li>
+          </li> -->
+       
           <li role="menuitem" class='position-relative   '>
-          <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=multipurpose_flooring" class='border-bottom'>다목적바닥재</a>
-            <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="다목적바닥재 하위 메뉴">
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=multipurpose_flooring&submenu=가정용">가정용</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=multipurpose_flooring&submenu=상업용">상업용</a></li>
-            </ul>
-          </li>
-          <li role="menuitem" class='position-relative   '>
-            <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=accessories" class='border-bottom'>부자재</a>
+            <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=009&skey2=009001&boarden=preventionmat" class='border-bottom'>피로예방매트</a>
             <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="부자재 하위 메뉴">
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=accessories&submenu=테이프">테이프</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=accessories&submenu=몰딩">몰딩</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=009&skey2=009001&boarden=preventionma">피로예방매트</a></li>
+              
+            </ul>
+          </li>
+
+          <li role="menuitem" class='position-relative   '>
+            <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=013&skey2=013001&boarden=multipurpose_flooring" class='border-bottom'>LX바닥재</a>
+            <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="다목적바닥재 하위 메뉴">
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=013&skey2=013001&boarden=multipurpose_flooring&submenu=가정용">가정용</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=013&skey2=013002&boarden=multipurpose_flooring&submenu=상업용">상업용</a></li>
+            </ul>
+          </li>
+          
+          <li role="menuitem" class='position-relative   '>
+            <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=016&skey2=016001&boarden=subsidiary" class='border-bottom'>부자재</a>
+            <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="부자재 하위 메뉴">
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=016&skey2=016001&boarden=subsidiary">부자재</a></li>
+              
             </ul>
           </li>
           <li role="menuitem" class='position-relative   '>
-            <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=custom_order" class='border-bottom'>주문제작</a>
+            <a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=016&skey2=016001&boarden=custom_order" class='border-bottom'>주문제작</a>
             <ul role="menu"  class='d-flex  flex-column  gap-2 submenu  pt-3 fs-15 line-height-1' aria-label="주문제작 하위 메뉴">
               <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=custom_order&submenu=디자인 매트">디자인 매트</a></li>
-              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001001&boarden=custom_order&submenu=로고매트">로고매트</a></li>
+              <li role="menuitem"><a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=001&skey2=001002&boarden=custom_order&submenu=로고매트">로고매트</a></li>
             </ul>
           </li>
         </ul>

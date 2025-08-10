@@ -7,7 +7,7 @@ defined('_FC_') ? include_once($kw_path."/inc/footer_custom.php") : null;
 <footer id="ft">
   
     <div class='border-top border-bottom py-1'>
-        <div class="max-width mx-auto d-lg-flex justify-content-between align-items-center">
+        <div class="max-width mx-auto d-lg-flex justify-content-between align-items-center px-3 px-xl-0">
             <nav>
                 <ul class='d-flex justify-content-lg-between align-items-center gap-lg-5 gap-3 justify-content-center py-1 py-lg-0  fs-17 fw500 text-nowrap'>
                     <li><a href="<?php $kw_url; ?>/">홈</a></li>
@@ -17,7 +17,7 @@ defined('_FC_') ? include_once($kw_path."/inc/footer_custom.php") : null;
                     <li><a href="#">오시는길</a></li>
                 </ul>
             </nav>
-            <div class="certification d-flex justify-content-between align-items-center gap-3 d-none d-lg-block">
+            <div class="certification  justify-content-between align-items-center gap-3 d-none d-lg-flex">
                 <img src="<?php echo $kw_url.'/img/2025/mark/brand005.png'; ?>" class='ssl' alt="Alpha SSL 인증마크">
                 <img src="<?php echo $kw_url.'/img/2025/mark/img_escrow_mark2.jpg'; ?>" class='kb' alt="에스크로 인증마크">
                 <img src="<?php echo $kw_url.'/img/2025/mark/ct_logo.jpg'; ?>" class='ct' alt="개인정보보호 인증마크">

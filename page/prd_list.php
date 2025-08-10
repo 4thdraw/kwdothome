@@ -3,26 +3,26 @@ define('_PROLIST_',true);
 //하단고객센터 노출관련 변수
 define('_FC_', true);
 include_once("../config.php");
+
+
+if($_GET['skey1']==""){ $_GET['skey1']="001"; }
+$skey1=$_GET['skey1'];
+$skey2=$_GET['skey2'];
+
  ?>
 <?php include_once($kw_path."/inc/header_2025.php"); ?>
+
+<?php 
+   include "../inc/sub_product.php";   
+	//제품대메뉴 : $class_name_big
+	//제품소메뉴 : $class_name_mid
+	
+?>
 <?php include_once($kw_path."/inc/top_2025.php"); ?>
 
 <!--상품목록-->	
 
-<?php
-if($_GET['skey1']==""){ $_GET['skey1']="001"; }
-$skey1=$_GET['skey1'];
-$skey2=$_GET['skey2'];
-?>
 
-<?php 
-
-   include "../inc/sub_product.php";
-   
-	// 제품대메뉴 : $class_name_big
-	// 제품소메뉴 : $class_name_mid
-
-?>
 <?php
 
 $CONF['normal_page_limit']="25";
@@ -373,7 +373,7 @@ $SQL->select(
 );
 while($tmp_data = $SQL->fetch_assoc())
 {
-	if($tmp_data['imgfile']!='' and count($case_data)<3){
+	if($tmp_data['imgfile']!='' and count($case_data)< 16){
 		$comment_where_str[] = 'board_id='.$tmp_data['id']; //코멘트 호출 번호 부여
 		$case_data[] = $tmp_data;
 	}
@@ -408,377 +408,262 @@ if(!empty($tmp_qstring2)) $tmp_qstring2 = '&'.$tmp_qstring2;
 ?>
 
 
-<!--서브컨텐츠-->
 
-			
-		<div class="subMn">
-			<?php
-			if(count($class_mid_arr)>0) {
-				foreach($class_mid_arr as $data){ ?>
-			<a href="../product/product_list.php?skey1=<?php echo substr($data['class_code'],0,3);?>&skey2=<?php echo $data['class_code'];?>" class="smn<?php if($_GET['skey2']==$data['class_code']){ echo "_s"; } ?>"><?php echo $data['class_name'];?></a>
-			<?php }
-			}
-			?>
-			<a href="../product/product_list.php?skey1=<?php echo substr($data['class_code'],0,3);?>" class="smn<?php if($_GET['skey2']==""){ echo "_s"; } ?>">전체</a>
-			<?php if($_GET['skey1']=='004'){ ?>
-			<a href="../customer/gallery_list.php" class="smn_s" style="margin-right:10px;background:#5ca5ea">로고매트 시안보기</a>
-			<?php } ?>
-			<p class="clr"></p>
-		</div>
-		<div class="subcontents">
-			<p><img src="../img/product/stit1.gif" alt="추천상품" /></p>
-			<!--리스트-->
-			<div class="subList">
-				<div class="flL">
-					<?php if($reco_result_array[1]['product_id']!=''){ ?>
-					<div class="proBox">
-					<?php
-						if ( ereg("MSIE", $_SERVER[HTTP_USER_AGENT]) ) {
-							if ( ereg("MSIE 6.0", $_SERVER[HTTP_USER_AGENT]) ) {
-								//익스플로어 6
-								echo  "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:450px;height:400px;'><a href='../product/product_detail.php?id=".$reco_result_array[0]['product_id']."&skey1=".substr($reco_result_array[0]['class_code'],0,3)."&skey2=".$reco_result_array[0]['class_code']."'><img src='../img/product/water_m.gif' style='padding-top:180px' border='0'></div></div></div>";
-							} else {
-								//익스플로어
-								echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:450px;height:400px;'><a href='../product/product_detail.php?id=".$reco_result_array[0]['product_id']."&skey1=".substr($reco_result_array[0]['class_code'],0,3)."&skey2=".$reco_result_array[0]['class_code']."'><img src='../img/product/water_mid.png' style='padding:140px 180px 280px 100px' border='0'></div></div></div>";
-							}
-						} else {
-							echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:-25px;margin-top:0px;width:450px;height:400px;'><a href='../product/product_detail.php?id=".$reco_result_array[0]['product_id']."&skey1=".substr($reco_result_array[0]['class_code'],0,3)."&skey2=".$reco_result_array[0]['class_code']."'><img src='../img/product/water_mid.png' style='padding-top:180px' border='0'></div></div></div>";
-						}
-						?>
-						<p class="border"><a href="../product/product_detail.php?id=<?php echo $reco_result_array[0]['product_id']; ?>&skey1=<?php echo substr($reco_result_array[0]['class_code'],0,3); ?>&skey2=<?php echo $reco_result_array[0]['class_code']; ?>"><img src="<?php echo $image_array[$reco_result_array[0]['product_id']];?>" width="410px" height="405px"/></a></p>
-						<h5><?php echo $row_class['middle'][$reco_result_array[0]['class_code']]; ?></h5>
-						<p class="stxt"><?php echo $reco_result_array[0]['product_name']; ?></p>
-					</div>
-					<?php } else { ?>
-					<div class="proBox2">
-						<p class="border"><img src="../img/product/noimg_big.jpg" style="width:400px;*height:410px" /></p>
-					</div>
-					<?php } ?>
+
+
+
+
+
+
+
+
+<div class=' position-relative content_wrapper mainContentwrapper'  >
+	 <!-- 제품하위카테고리 -->
+	 <div class='subMn border-bottom py-5'>
+			<div class="max-width mx-auto px-3 px-xl-0 d-flex w-100 justify-content-between align-items-center pt-5">
+				<div>
+					<h2 class='page_title fs-48 fw400'>
+							<span >
+								<?php echo $class_name_big; ?>
+							</span>
+							
+							<strong class='active-color fw400 text-uppercase'>
+								<?php echo $board_title_en; ?>
+							</strong>
+					</h2> 
+					<p class='fs-20 gray-dark mt-3'>
+						세련된 디자인과 실용성을 모두 갖춘 카페트! <br>
+						지금 바로 특별 할인 혜택을 만나보세요
+					</p>
 				</div>
-				<div class="flL">
-					<?php if($reco_result_array[1]['product_id']!=''){ ?>
-					<div class="proBox2">
-					<?php
-						if ( ereg("MSIE", $_SERVER[HTTP_USER_AGENT]) ) {
-							if ( ereg("MSIE 6.0", $_SERVER[HTTP_USER_AGENT]) ) {
-								//익스플로어 6
-								echo  "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[1]['product_id']."&skey1=".substr($reco_result_array[1]['class_code'],0,3)."&skey2=".$reco_result_array[1]['class_code']."'><img src='../img/product/water_m.gif' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							} else {
-								//익스플로어
-								echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[1]['product_id']."&skey1=".substr($reco_result_array[1]['class_code'],0,3)."&skey2=".$reco_result_array[1]['class_code']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							}
-						} else {
-							echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:-25px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[1]['product_id']."&skey1=".substr($reco_result_array[1]['class_code'],0,3)."&skey2=".$reco_result_array[1]['class_code']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-						}
+					
+					<ul class='d-flex gap-3 text-nowrap'>
+						<li>
+							<a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=<?php echo substr($data['class_code'],0,3);?>" class="smn rounded-pill px-3 py-2 <?php if($_GET['skey2']==""){ echo "_s"; } ?>">전체</a>
+					
+						</li>
+						<?php
+						if(count($class_mid_arr)>0) {
+							foreach($class_mid_arr as $data){ 
 						?>
-						<p class="border"><a href="../product/product_detail.php?id=<?php echo $reco_result_array[1]['product_id']; ?>&skey1=<?php echo substr($reco_result_array[1]['class_code'],0,3); ?>&skey2=<?php echo $reco_result_array[1]['class_code']; ?>"><img src="<?php echo $image_array_s[$reco_result_array[1]['product_id']];?>" width="180px" height="180px"/></a></p>
+						<li>
+							<a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=<?php echo substr($data['class_code'],0,3);?>&skey2=<?php echo $data['class_code'];?>" class="smn rounded-pill px-3 py-2 <?php if($_GET['skey2']==$data['class_code']){ echo " active-bg text-white "; } ?>"><?php echo $data['class_name'];?></a>
+						</li>
+						<?php } 
+							}
+						?>
+					</ul>
+			</div>
+	 </div>
+	 <!-- 상품리스트			 -->
+
+	<div class='border-bottom'>
+		
+	  
+		<div class='kw_wrap d-flex flex-column align-items-center max-width mx-auto px-3 px-xl-0 py-5 '>
+		
+		
+	
+		 
+		 <!--추천상품 리스트-->
+			<div class="subList row row-cols-2 row-cols-md-4 d-none">
+			
+					
+			
+					<?php if($reco_result_array[1]['product_id']!=''){ ?>
+					<div class="proBox2 col">
+					
+						<p class="border">
+							<a href="../product/product_detail.php?id=<?php echo $reco_result_array[1]['product_id']; ?>&skey1=<?php echo substr($reco_result_array[1]['class_code'],0,3); ?>&skey2=<?php echo $reco_result_array[1]['class_code']; ?>">
+								<img src="<?php echo $image_array_s[$reco_result_array[1]['product_id']];?>" class='img-fluid'/></a></p>
 						<h5><?php echo $row_class['middle'][$reco_result_array[1]['class_code']]; ?></h5>
 						<p class="stxt"><?php echo $reco_result_array[1]['product_name']; ?></p>
 					</div>
-					<?php } else { ?>
-					<div class="proBox2">
-						<p class="border"><img src="../img/product/noimg.jpg" /></p>
-					</div>
-					<?php } ?>
+					<?php }  ?>
 					<?php if($reco_result_array[2]['product_id']!=''){ ?>
-					<div class="proBox2">
-					<?php
-						if ( ereg("MSIE", $_SERVER[HTTP_USER_AGENT]) ) {
-							if ( ereg("MSIE 6.0", $_SERVER[HTTP_USER_AGENT]) ) {
-								//익스플로어 6
-								echo  "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[2]['product_id']."&skey1=".substr($reco_result_array[2]['class_code'],0,3)."&skey2=".$reco_result_array[2]['class_code']."'><img src='../img/product/water_m.gif' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							} else {
-								//익스플로어
-								echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[2]['product_id']."&skey1=".substr($reco_result_array[2]['class_code'],0,3)."&skey2=".$reco_result_array[2]['class_code']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							}
-						} else {
-							echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:-25px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[2]['product_id']."&skey1=".substr($reco_result_array[2]['class_code'],0,3)."&skey2=".$reco_result_array[2]['class_code']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-						}
-						?>
-						<p class="border"><a href="../product/product_detail.php?id=<?php echo $reco_result_array[2]['product_id']; ?>&skey1=<?php echo substr($reco_result_array[2]['class_code'],0,3); ?>&skey2=<?php echo $reco_result_array[2]['class_code']; ?>"><img src="<?php echo $image_array_s[$reco_result_array[2]['product_id']];?>" width="180px" height="180px"/></a></p>
+					<div class="proBox2 col">
+					
+						<p class="border">
+							<a href="../product/product_detail.php?id=<?php echo $reco_result_array[2]['product_id']; ?>&skey1=<?php echo substr($reco_result_array[2]['class_code'],0,3); ?>&skey2=<?php echo $reco_result_array[2]['class_code']; ?>">
+								<img src="<?php echo $image_array_s[$reco_result_array[2]['product_id']];?>" class='img-fluid'/></a></p>
 						<h5><?php echo $row_class['middle'][$reco_result_array[2]['class_code']]; ?></h5>
 						<p class="stxt"><?php echo $reco_result_array[2]['product_name']; ?></p>
 					</div>
-					<?php } else { ?>
-					<div class="proBox2">
-						<p class="border"><img src="../img/product/noimg.jpg"/></p>
-					</div>
-					<?php } ?>
-					<p class="clr"></p>
+					<?php }  ?>
 					<?php if($reco_result_array[3]['product_id']!=''){ ?>
-					  <div class="proBox2">
-					<?php
-						if ( ereg("MSIE", $_SERVER[HTTP_USER_AGENT]) ) {
-							if ( ereg("MSIE 6.0", $_SERVER[HTTP_USER_AGENT]) ) {
-								//익스플로어 6
-								echo  "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[3]['product_id']."&skey1=".substr($reco_result_array[3]['class_code'],0,3)."&skey2=".$reco_result_array[3]['class_code']."'><img src='../img/product/water_m.gif' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							} else {
-								//익스플로어
-								echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[3]['product_id']."&skey1=".substr($reco_result_array[3]['class_code'],0,3)."&skey2=".$reco_result_array[3]['class_code']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							}
-						} else {
-							echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:-25px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[3]['product_id']."&skey1=".substr($reco_result_array[3]['class_code'],0,3)."&skey2=".$reco_result_array[3]['class_code']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-						}
-						?>
-							<p class="border"><a href="../product/product_detail.php?id=<?php echo $reco_result_array[3]['product_id']; ?>&skey1=<?php echo substr($reco_result_array[3]['class_code'],0,3); ?>&skey2=<?php echo $reco_result_array[3]['class_code']; ?>"><img src="<?php echo $image_array_s[$reco_result_array[3]['product_id']];?>" width="180px" height="180px"/></a></p>
-							<h5><?php echo $row_class['middle'][$reco_result_array[3]['class_code']]; ?></h5>
-							<p class="stxt"><?php echo $reco_result_array[3]['product_name']; ?></p>
-					  </div>
-					<?php } else { ?>
-					<div class="proBox2" style="<?php if($reco_result_array[3]['product_name']==''){ ?>margin-top:30px;*margin-top:0px<?php } ?>">
-						<p class="border"><img src="../img/product/noimg.jpg" /></p>
+					<div class="proBox2 col">
+					
+						<p class="border">
+							<a href="../product/product_detail.php?id=<?php echo $reco_result_array[3]['product_id']; ?>&skey1=<?php echo substr($reco_result_array[3]['class_code'],0,3); ?>&skey2=<?php echo $reco_result_array[3]['class_code']; ?>">
+								<img src="<?php echo $image_array_s[$reco_result_array[3]['product_id']];?>" class='img-fluid'/></a></p>
+						<h5><?php echo $row_class['middle'][$reco_result_array[3]['class_code']]; ?></h5>
+						<p class="stxt"><?php echo $reco_result_array[3]['product_name']; ?></p>
 					</div>
-					<?php } ?>
+					<?php }  ?>
 					<?php if($reco_result_array[4]['product_id']!=''){ ?>
-					<div class="proBox2">
-					<?php
-						if ( ereg("MSIE", $_SERVER[HTTP_USER_AGENT]) ) {
-							if ( ereg("MSIE 6.0", $_SERVER[HTTP_USER_AGENT]) ) {
-								//익스플로어 6
-								echo  "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[4]['product_id']."&skey1=".substr($reco_result_array[4]['class_code'],0,3)."&skey2=".$reco_result_array[4]['class_code']."'><img src='../img/product/water_m.gif' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							} else {
-								//익스플로어
-								echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[4]['product_id']."&skey1=".substr($reco_result_array[4]['class_code'],0,3)."&skey2=".$reco_result_array[4]['class_code']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							}
-						} else {
-							echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:-25px;margin-top:0px;width:190px;height:190px;'><a href='../product/product_detail.php?id=".$reco_result_array[4]['product_id']."&skey1=".substr($reco_result_array[4]['class_code'],0,3)."&skey2=".$reco_result_array[4]['class_code']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-						}
-						?>
-						<p class="border"><a href="../product/product_detail.php?id=<?php echo $reco_result_array[4]['product_id']; ?>&skey1=<?php echo substr($reco_result_array[4]['class_code'],0,3); ?>&skey2=<?php echo $reco_result_array[4]['class_code']; ?>"><img src="<?php echo $image_array_s[$reco_result_array[4]['product_id']];?>" width="180px" height="180px"/></a></p>
+					<div class="proBox2 col">
+					
+						<p class="border">
+							<a href="../product/product_detail.php?id=<?php echo $reco_result_array[4]['product_id']; ?>&skey1=<?php echo substr($reco_result_array[4]['class_code'],0,3); ?>&skey2=<?php echo $reco_result_array[4]['class_code']; ?>">
+								<img src="<?php echo $image_array_s[$reco_result_array[4]['product_id']];?>" class='img-fluid'/></a></p>
 						<h5><?php echo $row_class['middle'][$reco_result_array[4]['class_code']]; ?></h5>
 						<p class="stxt"><?php echo $reco_result_array[4]['product_name']; ?></p>
 					</div>
-					<?php } else { ?>
-					<div class="proBox2" style="<?php if($reco_result_array[3]['product_name']==''){ ?>margin-top:30px;*margin-top:0px<?php } ?>">
-						<p class="border"><img src="../img/product/noimg.jpg" /></p>
-					</div>
-					<?php } ?>
-				</div>
-				<p class="clr"></p>
+					<?php }  ?>
+					
+				
 			</div>
-			<!--//리스트-->
-			<!--이벤트상품-->
-			<p align="right" style="position:absolute;margin-left:738px;margin-top:25px;*margin-left:730px;z-index:10"><a href="../product/product_best.php"><img src="../img/main/more.gif" border="0" style=""/></a></p>
-			<script language="javascript">
-				var season;
-				function SeasonMoveNext(){
-					clearTimeout(season);
-					var cdiv=document.getElementById("currentDIV").value*1;
-					for(var i=1;i<=<?php echo number_format(count($season_result_array)/5,0); ?>;i++){
-						document.getElementById("seasonlayer"+i).style.display="none";
-					}
-					if(cdiv==<?php echo number_format(count($season_result_array)/5,0); ?>){ cdiv=0; }
-					document.getElementById("seasonlayer"+(cdiv+1)).style.display="";
-					document.getElementById("currentDIV").value = cdiv+1;
-					season = setTimeout("SeasonMoveNext()", 9000);
-				}
-				function SeasonMoveBack(){
-					clearTimeout(season);
-					var cdiv=document.getElementById("currentDIV").value*1;
-					for(var i=1;i<=<?php echo number_format(count($season_result_array)/5,0); ?>;i++){
-						document.getElementById("seasonlayer"+i).style.display="none";
-					}
-					var tdiv = cdiv-1;
-					if(tdiv<1){ tdiv = <?php echo number_format(count($season_result_array)/5,0); ?>; }
-					document.getElementById("seasonlayer"+(tdiv)).style.display="";
-					document.getElementById("currentDIV").value = tdiv;
-				}
-				window.onload = function() {
-					season = setTimeout("SeasonMoveNext()", 9000);
-				};
-			</script>
-			<div class="eventList" style="margin-left:0px">
-				<a href="javascript:SeasonMoveBack()" class="arwBtnB" style="float:left;margin-right:2px;margin-left:-15px;"></a>
-				<?php if(count($season_result_array)>0){ ?>
-				<?php $i=0; ?>
-					<?php foreach($season_result_array as $season){ ?>
-					<?php if(($i%5)==0){ ?>
-					<div id="seasonlayer<?php echo ($i/5)+1; ?>" style="<?php if($i>0){ echo ";display:none"; } ?>">
-					<?php } ?>
-					<div class="proBox1">
+		 <!--일반상품 리스트-->	
+
+			<div class="contents w-100" >
+				<div class="subList row row-cols-2 row-cols-md-4 w-100">
+			
 					<?php
-						if ( ereg("MSIE", $_SERVER[HTTP_USER_AGENT]) ) {
-							if ( ereg("MSIE 6.0", $_SERVER[HTTP_USER_AGENT]) ) {
-								//익스플로어 6
-								echo  "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:120px;height:150px;'><a href='../product/product_detail.php?id=".$season['product_id']."&skey1=".substr($season['class_code'],0,3)."&skey2=".$season['class_code']."'><img src='../img/product/water_m.gif' style='padding:40px 0px' border='0' ></div></div></div>";
-							} else {
-								//익스플로어
-								echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:120px;height:150px;'><a href='../product/product_detail.php?id=".$season['product_id']."&skey1=".substr($season['class_code'],0,3)."&skey2=".$season['class_code']."'><img src='../img/product/water_mid.png' style='padding:40px 0px' border='0' ></div></div></div>";
-							}
-						} else {
-							echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:-25px;margin-top:0px;width:120px;height:150px;'><a href='../product/product_detail.php?id=".$season['product_id']."&skey1=".substr($season['class_code'],0,3)."&skey2=".$season['class_code']."'><img src='../img/product/water_mid.png' style='padding:40px' border='0' ></div></div></div>";
-						}
+					if(count($row)>0) {
+						$i=0;
+						foreach($row as $data) {
+					?>
+					<div class="proBox3 mt-4 d-flex flex-column align-items-stretch justify-content-between" >
+							
+						<p class="border flex-grow-1">
+							<a href="prd_view.php?id=<?php echo $data['dpv_id']?><?php echo $tmp_qstring2?>" class='d-block h-100'>
+								<?php echo $data['dpv_product_image']?>
+							</a>
+						</p>
+						<h5 class='text-center fs-18 mt-2'><?php echo $data['dpv_class_name_m'];?></h5>
+						<p class="stxt text-center fs-16 "><?php echo $data['dpv_product_name']; ?>
+						<?php
+							
+							$diff=$FUNC->dateDiff($data['internal_Date'],date('Y-m-d'));
+							if($diff['d']<=30) {
 						?>
-						<p class="border"><a href="../product/product_detail.php?id=<?php echo $season['product_id']; ?>&skey1=<?php echo substr($season['class_code'],0,3); ?>&skey2=<?php echo $season['class_code']; ?>"><?php if($image_array_s[$season['product_id']]==''){ ?><img src="../img/product/noimg.jpg" width="110px" height="110px" border="0"/><?php } else { ?><img src="<?php echo $image_array_s[$season['product_id']];?>" width="110px" height="110px"/><?php } ?></p>
-						<p class="stxt" style="width:113px;margin-top:5px"><?php echo $season['product_name']; ?></a></p>
+							<img src="../img/common/new.gif">
+						<?php } ?>
+						<strong><?php echo $data['dpv_price_retail']; ?></strong>
+					</p>
 					</div>
-					<?php $i++; ?>
-					<?php if(($i%5)==0){ ?></div><?php } ?>
+					<?php
+						$i++;
+						}
+					} else {
+					?>
+					<div class="proBox3" >
+						등록 혹은 검색된 상품이 없습니다.
+					
+					</div>
+					<?php
+					}
+					?>
+		
+			</div>
+			<div class="paging pt-5 d-flex justify-content-center gap-2 align-items-center">
+				<span class='prev_arrow d-flex flex-column justify-content-center px-2'>
+					<svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M1.11469 7.50024L6.90094 13.2872C7.01094 13.3972 7.06544 13.5292 7.06444 13.6832C7.06344 13.8372 7.00744 13.9695 6.89644 14.08C6.78544 14.1905 6.65319 14.2457 6.49969 14.2457C6.34619 14.2457 6.21394 14.1905 6.10294 14.08L0.372188 8.35299C0.251188 8.23149 0.162687 8.09649 0.106687 7.94799C0.0511875 7.79849 0.0234375 7.64924 0.0234375 7.50024C0.0234375 7.35124 0.0511875 7.20224 0.106687 7.05324C0.162687 6.90424 0.251188 6.76924 0.372188 6.64824L6.10219 0.915239C6.21269 0.804739 6.34569 0.750239 6.50119 0.751739C6.65619 0.753239 6.78919 0.809239 6.90019 0.919739C7.01019 1.03024 7.06519 1.16249 7.06519 1.31649C7.06519 1.47049 7.01019 1.60274 6.90019 1.71324L1.11469 7.50024Z" fill="black"/>
+					</svg>
+				</span>
+				<?php echo $FUNC->getPageIndexH($CONF['request_uri'], $CONF['query_flag'], $cpage, $CONF['normal_page_limit'], $total_article); ?>
+				<span class='next_arrow d-flex flex-column justify-content-center px-2'>
+					<svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M6.88531 7.50025L1.09906 1.71325C0.989062 1.60325 0.934562 1.47125 0.935562 1.31725C0.936562 1.16325 0.992562 1.031 1.10356 0.9205C1.21456 0.81 1.34681 0.754751 1.50031 0.754751C1.65381 0.754751 1.78606 0.81 1.89706 0.9205L7.62781 6.6475C7.74881 6.769 7.83731 6.904 7.89331 7.0525C7.94881 7.202 7.97656 7.35125 7.97656 7.50025C7.97656 7.64925 7.94881 7.79825 7.89331 7.94725C7.83731 8.09625 7.74881 8.23125 7.62781 8.35225L1.89781 14.0852C1.78731 14.1957 1.65431 14.2502 1.49881 14.2487C1.34381 14.2472 1.21081 14.1912 1.09981 14.0807C0.989811 13.9702 0.934812 13.838 0.934812 13.684C0.934812 13.53 0.989811 13.3977 1.09981 13.2872L6.88531 7.50025Z" fill="black"/>
+					</svg>
+				</span>
+			</div>
+		</div>
+	</div>	
+
+	<div class="caseList py-5 border-top " id="caseexpl">
+		
+		<!-- 시공사례 : ../case/case_list.php -->
+	<div class='kw_wrap  max-width mx-auto py-5 px-3 px-xl-0'>
+		<h2 class='fw400 fs-20 line-height-1 px-3 px-lg-0 mb-lg-4 mb-4 d-flex flex-column  gap-2 align-items-center align-items-lg-start  justify-content-center justify-content-lg-start letter-spacing-0-5'>
+			<strong class='active-color fs-37 fw700 col-12 text-center text-lg-start col-lg-auto'>
+				시공갤러리
+			</strong>
+			<span><span class='fw800'>20년 시공노하우</span>로 완성한 공간들</span>
+		</h2>
+		<div class="swiper overflow-visible">
+			<div class="swiper-wrapper">
+				<?php if(count($case_data)>0){ ?>
+					<?php foreach($case_data as $data){ ?>
+						<div class="swiper-slide">
+							<div class="imgThumb">
+								<?php if($row_img_case[$data['id']]!==''){ ?>
+									<a href="<?php echo $kw_url; ?>/case/case_view.php?tc=construction&id=<?php echo $data['id'];?>" class='d-block'>
+										<img src="../inc/parseImage_s.php?id=<?php echo $row_img_case[$data['id']]?>" class='img-fluid w-100' alt="">
+									</a>
+								<?php } else { ?>
+									<a href="<?php echo $kw_url; ?>/case/case_view.php?tc=construction&id=<?php echo $data['id'];?>" class='d-block'>
+										<img src="../img/product/noimg.jpg" alt="" class='img-fluid  w-100'>
+									</a>							
+								<?php } ?>
+									<a href="<?php echo $kw_url; ?>/case/case_view.php?tc=construction&id=<?php echo $data['id'];?>" class='d-flex flex-column  align-items-center gap-2 my-3 line-height-1'>
+										<span class='fs-20 fw500 pb-1 gray-text'>현관매트</span>
+										<span class='fs-16 fw600  pb-1 active-color'>로고매트, 브러쉬 조립매트</span>
+										<span class='fs-16 fw600'><?php echo $FUNC->stringCut($data['subject'],15); ?></span>
+									</a>
+								
+							</div>
+						</div>
+						
 					<?php } ?>
-					<?php if(($i%5)>0){ ?></div><?php } ?>
 				<?php } else { ?>
-				<div class="proBox1" style="height:180px">&nbsp;</div>
+				<div class="proBox1 swiper-slide" > 등록된 시공사례가 없습니다. </div>
 				<?php } ?>
-				<a href="javascript:SeasonMoveNext()" class="arwBtn" style="float:right;margin-left:-15px;"></a>
-				<p class="clr"></p>
-			<input type="hidden" id="currentDIV"  name="currentDIV" value="1">
 			</div>
-			<!--//이벤트상품-->
 		</div>
-	</div>
-<!--//서브컨텐츠-->
-</div>
-<!--//컨텐츠-->
-<!--컨텐츠-->
-<p class="clr"></p>
-<div class="contents" style="*margin-top:-10px">
-	<div class="subListBlue">
-		<div class="listTop">
-			<h2><?php echo $class_name_big;?> <?php if($class_name_mid!=''){ ?><  <b><?php echo $class_name_mid;?></b><?php } ?>에는 <span class="txtBlue"><?php echo $total_article;?> 개</span>의 상품이 있습니다.</h2>
-			<!--제품정렬-->
-			<form id="seFrm" action="./product_list.php" method="GET" onSubmit="return false">
-			<input type="hidden" name="cc" id="cc" value="<?php echo $tmp_class_code?>" />
-			<input type="hidden" name="skey1" id="skey1" value="<?php echo $_GET['skey1']; ?>" />
-			<input type="hidden" name="skey2" id="skey2" value="<?php echo $_GET['skey2']; ?>" />
-			<!--셀렉트박스-->
-			<div class="sortbox1">
-			<script type="text/javascript">
-			function shMenuS() {
-				var obj=document.getElementById('caMenuS');
-				if(obj.style.display=='none') obj.style.display='';
-				else obj.style.display='none';
-			}
+		<script>
+	
+		
+	const caseexpl = new Swiper('#caseexpl .swiper', {
+    loop: true,
+    slidesPerView: 4,       // 기본값 (1300px 이상)
+    spaceBetween: 25,       // 기본 간격
+    loopedSlides: 6,
+    autoplay: {
+         delay: 5000,
+         disableOnInteraction: false,
+     },
+    watchSlidesProgress: true,
+    watchSlidesVisibility: true,
 
-			function sCaS(code, cname) {
-				document.getElementById('nowCaS').innerHTML=cname;
-				document.getElementById('trKeys').value=code;
-				document.getElementById("seFrm").submit();
-				//shMenuS();
-			}
+    breakpoints: {
+        1300: { // 1300px 이상
+            slidesPerView: 4,
+            spaceBetween: 25,
+            centeredSlides: false
+        },
+        1080: { // 1080px 이상 ~ 1299px
+            slidesPerView: 3,
+            spaceBetween: 16,
+            centeredSlides: true
+        },
+        768: {  // 768px 이상 ~ 1079px
+            slidesPerView: 1,
+            spaceBetween: 16,
+            centeredSlides: true
+        },
+        0: { // 0px 이상 ~ 767px
+            slidesPerView: 1,
+            spaceBetween: 16,
+            centeredSlides: true
+        }
+    },
+
+  
+});
+
 			</script>
-			<style>
-			.onSr { background: #65aaeb; color:#fff; };
-			.outSr { background: #FFF;};
-			</style>
-			<!--//셀렉트박스-->
-			<div class="cateBox" style="height:35px">
-			<div class="pro_sortBox">
-			  <!--셀렉트박스-->
-			<div class="selectBox" style="width:120px; height:15px;cursor:pointer; background:#fff;">
-				<table border="0" cellpadding="0" cellspacing="0" onClick="shMenuS()">
-					<tr>
-						<td width="100" align="left"><span style="margin-left:10px" id="nowCaS"><?php echo $tmp_searchText?></span></td>
-						<td align="right"><img src="../img/common/arw1.gif" align="absmiddle" style="vertical-align:middle" /></td>
-					</tr>
-				</table>
-				<table border="0" cellpadding="0" cellspacing="0" style="z-index:999;">
-				<tr><td>
-				<div style="z-index:999;position:relative;margin-top:3px;*margin-left:-60px">
-				<div id="caMenuS" class="selectBox" style="border-top:none;width:120px;background:#FFF;top:0px;left:0px;margin-left:-1px;display:none;z-index:999;position:absolute">
-					<table border="0" width="100%" cellpadding="0" cellspacing="0" onClick="sCaS('1', '신상품순')" onmouseover="this.className='onSr'" onmouseout="this.className='outSr'">
-						<tr>
-							<td width="80" align="left"><span style="margin-left:10px">신상품순</span></td>
-							<td align="right">&nbsp;</td>
-						</tr>
-					</table>
-					<table border="0" width="100%" cellpadding="0" cellspacing="0" onClick="sCaS('2', '낮은가격순')" onmouseover="this.className='onSr'" onmouseout="this.className='outSr'">
-						<tr>
-							<td width="80" align="left"><span style="margin-left:10px">낮은가격순</span></td>
-							<td align="right">&nbsp;</td>
-						</tr>
-					</table>
-					<table border="0" width="100%" cellpadding="0" cellspacing="0" onClick="sCaS('3', '높은가격순')" onmouseover="this.className='onSr'" onmouseout="this.className='outSr'">
-						<tr>
-							<td width="80" align="left"><span style="margin-left:10px">높은가격순</span></td>
-							<td align="right">&nbsp;</td>
-						</tr>
-					</table>
-					<input type="hidden" id="trKeys" name="trKeys" value="1" />
-				</div>
-				</div>
-				</td></tr></table>
-			</div>
-			  <!--//셀렉트박스-->
-			<!--제품카테고리-->
-			</div>
-			<p class="clr"></p>
-		  </div>
-		  </form>
-			<!--//제품정렬-->
-			<p class="clr"></p>
-		</div>
-		<?php
-		if(count($row)>0) {
-			$i=0;
-			foreach($row as $data) {
-		?>
-		<div class="proBox3" <?php if($i%5==0){ ?>style="margin-left:0;"<?php } ?>>
-					<?php
-						if ( ereg("MSIE", $_SERVER[HTTP_USER_AGENT]) ) {
-							if ( ereg("MSIE 6.0", $_SERVER[HTTP_USER_AGENT]) ) {
-								//익스플로어 6
-								echo  "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:200px;height:200px;'><a href='../product/product_detail.php?id=".$data['dpv_id']."><img src='../img/product/water_m.gif' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							} else {
-								//익스플로어
-								echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:0px;margin-top:0px;width:200px;height:200px;'><a href='../product/product_detail.php?id=".$data['dpv_id']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-							}
-						} else {
-							echo "<div style=''><div style='position: relative;'><div style='position: absolute;float:left;margin-left:-25px;margin-top:0px;width:200px;height:200px;'><a href='../product/product_detail.php?id=".$data['dpv_id']."'><img src='../img/product/water_mid.png' style='padding:70px 80px 100px 50px' border='0' ></div></div></div>";
-						}
-						?>
-			<p class="border"><a href="product_detail.php?id=<?php echo $data['dpv_id']?><?php echo $tmp_qstring2?>"><?php echo $data['dpv_product_image']?></a></p>
-			<h5><?php echo $data['dpv_class_name_m'];?></h5>
-			<p class="stxt"><?php echo $data['dpv_product_name']?>
-			<?php
-				$diff=$FUNC->dateDiff($data['internal_Date'],date('Y-m-d'));
-				if($diff['d']<=30) {
-			?><img src="../img/common/new.gif">
-			<?php } ?>
-			<br><?php echo $data['dpv_price_retail']?></p>
-		</div>
-		<?php
-			$i++;
-			}
-		} else {
-		?>
-		<div class="proBox3" style="margin-left:0;">
-			등록 혹은 검색된 상품이 없습니다.
-			<p class="clr"></p>
-		</div>
-		<?php
-		}
-		?>
-		<p class="clr"></p>
-		</div>
-		<div class="paging">
-		<?php echo $FUNC->getPageIndexH($CONF['request_uri'], $CONF['query_flag'], $cpage, $CONF['normal_page_limit'], $total_article)?>
+		
 	</div>
-</div>
 
-</div>
-
-
-<!--상품목록  DB-->
-
-<div class='subpage_submenu py-2 py-xl-1 bg-gray px-3 px-xl-0'>
-					<ul class="mx-auto max-width py-2 navilist fw600 fs-18 d-flex justify-content-between align-items-center">                     
-                      <li class="navili d-none d-xl-block"><a href="https://ghmat.com/document/page/prd_list.php?pronm=prd_all">제품보기</a></li>
-                      <li class="navili d-none d-xl-block"><a href="">공간별추천</a></li>
-                      <li class="navili d-none d-xl-block"><a href="https://ghmat.com/document/page/gallery_list.php?pronm=prd_all">시공갤러리</a></li>
-                      <!-- <li class="navili d-none d-xl-block"><a href="">시공가이드</a></li> -->
-                      <li class="navili d-none d-xl-block"><a href="">주문제작</a></li>
-                      <li class="navili d-none d-xl-block"><a href="https://ghmat.com/document/page/board_list.php?boarden=Inquiries&amp;board=견적문의" class="orange-color">견적문의</a></li>
-					 
-                	</ul>
-</div>
-<div class='max-width d-flex mx-auto  position-relative mainContentwrapper'  >
-	<div class='kw_wrap d-flex flex-column align-items-center max-width mx-auto'>
-		<h2 class='page_title'>
-		<?php echo //$class_name_big; ?>
-		<strong>
-			<?php echo $board_title_en; ?>
-		</strong>
-		</h2> 
+			
+		
+					
+				
+		
+		
+			<!--//리스트-->
 	</div>
 	<?php include $kw_path."/inc/quick_sticky.php"; ?>
 </div>

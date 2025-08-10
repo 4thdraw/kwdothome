@@ -534,7 +534,11 @@ a{
     font-size: clamp(30px , 0.9vw + 24px , 37px) !important;
 }
 .fs-40{
-    font-size: clamp(24px , 1.5vw + 24px , 40px) !important;
+    font-size: clamp(24px , 1.4vw + 24px , 40px) !important;
+}
+
+.fs-48{
+    font-size: clamp(26px , 1.5vw + 24px , 48px) !important;
   
 }
 .fs-54{
@@ -666,4 +670,21 @@ a{
 .keep-all {
   word-break: keep-all;
 }
+.border-bottom-active{
+    position: relative;
+
+}
+.border-bottom-active:after{
+    content: "";
+    position: absolute;
+    left:0; right:0; bottom:-0.25rem;
+    height:2px;
+    background-color: var(--blue--origin);
+}
+
+.h43{
+    height: 43px;
+    line-height: 40px;
+}
+
 

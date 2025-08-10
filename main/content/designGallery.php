@@ -105,10 +105,10 @@
     slidesPerView: 4,       // 기본값 (1300px 이상)
     spaceBetween: 25,       // 기본 간격
     loopedSlides: 6,
-    // autoplay: {
-    //     delay: 5000,
-    //     disableOnInteraction: false,
-    // },
+    autoplay: {
+         delay: 5000,
+         disableOnInteraction: false,
+     },
     watchSlidesProgress: true,
     watchSlidesVisibility: true,
 
