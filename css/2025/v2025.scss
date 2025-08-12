@@ -581,20 +581,27 @@
     }
 }
 
+// absolute ↔ fixed ↔ absolute with bottom
+
 #quick_sticky{ 
     position: absolute;
     left:calc(50% + 620px);
     z-index: 1029;
     top:77px;
     // transition: 0.9s;
+    transition: top 0.4s ease, bottom 0.4s ease;
 
     &.fixquick{
-        position : fixed;        
+        position : fixed; 
+        top: 77px;
+        bottom: unset;       
     }
     &.bottom-position{
-        top:unset;
-        bottom:30px;
-        // transition: 0.9s;
+        position: absolute;
+        top: unset;
+        bottom: 30px;
+        transition: bottom 0.4s ease, opacity 0.3s ease;
+        opacity: 1;
     } 
     
 

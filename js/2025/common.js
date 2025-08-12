@@ -1,74 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
+  enableSmoothScrollToTop();
+  enableStickyNav();
+  bindModalToggle(".searchicon a");
 
-    enableSmoothScrollToTop();
-    enableStickyNav();
+  const quickSticky = document.getElementById('quick_sticky');
+  const wrapper = document.querySelector('.mainContentwrapper');
 
-    // 퀵메뉴 상단  fix 로 인한 sticky  불가
-    const quickSticky = document.getElementById('quick_sticky');
-    const wrapper = document.querySelector('.mainContentwrapper');
-   
-    // 실행
-    bindModalToggle(".searchicon a");
+  if (!quickSticky || !wrapper) return;
 
-    
+  let wrapperTop = 0;
+  let wrapperHeight = 0;
+  let isFixed = false;
+  let isAtBottom = false;
 
-    
-   if (!quickSticky || !wrapper) return;
+  const updateTriggerOffset = () => {
+    wrapperTop = wrapper.offsetTop;
+    wrapperHeight = wrapper.offsetHeight;
+    console.log('[DELAYED] 퀵메뉴 위치 재계산 → top:', wrapperTop, 'height:', wrapperHeight);
+  };
 
-    // 기준 위치 계산
-    let wrapperTop = wrapper.offsetTop;
-    let wrapperHeight = wrapper.offsetHeight;
-
-    let isFixed = false;
-    let isAtBottom = false;
-
-    const updateTriggerOffset = () => {
-      wrapperTop = wrapper.offsetTop;
-      wrapperHeight = wrapper.offsetHeight;
-    };
-
-    const onScroll = () => {
+  const onScroll = () => {
     const scrollY = window.scrollY;
-    const scrollBottom = scrollY + window.innerHeight;
+    const windowHeight = window.innerHeight;
+    const quickHeight = quickSticky.offsetHeight;
     const wrapperBottom = wrapperTop + wrapperHeight;
-    // const quickHeight = quickSticky.offsetHeight;
-
-    // 상태 1: fix 상태
-    if (scrollY >= wrapperTop && scrollBottom < wrapperBottom) {
+    const quickBottom = scrollY + quickHeight + 10; // 10px 여유
+  
+    // fix 상태로 전환
+    if (scrollY >= wrapperTop && quickBottom < wrapperBottom) {
       if (!isFixed) {
-        quickSticky.classList.add('fixquick');        
-        quickSticky.classList.remove('bottom-position')
+        quickSticky.classList.add('fixquick');
+        quickSticky.classList.remove('bottom-position');
         isFixed = true;
         isAtBottom = false;
       }
     }
-    // 상태 2: wrapper 하단 도달 → fix 해제하고 absolute bottom 처리
-    else if (scrollBottom >= wrapperBottom) {
+    // 하단 도달 시
+    else if (quickBottom >= wrapperBottom) {
       if (!isAtBottom) {
-        quickSticky.classList.remove('fixquick');       
-        quickSticky.classList.add('bottom-position')
-        isAtBottom = true;
+        quickSticky.classList.remove('fixquick');
+        quickSticky.classList.add('bottom-position');
         isFixed = false;
+        isAtBottom = true;
       }
     }
-    // 상태 3: 위로 올라감 → 초기화
+    // 초기화
     else if (scrollY < wrapperTop) {
-      quickSticky.classList.remove('fixquick');     
-      quickSticky.classList.remove('bottom-position')
+      quickSticky.classList.remove('fixquick');
+      quickSticky.classList.remove('bottom-position');
       isFixed = false;
       isAtBottom = false;
     }
   };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', () => {
-        updateTriggerOffset();
-        onScroll(); // 리사이즈 후 즉시 위치 반영
-      });
-   
-
   
+  
+
+  // 최초 위치 계산을 약간 지연해서 실행 (이미지 로딩 대기 목적)
+  setTimeout(() => {
+    updateTriggerOffset();
+    onScroll(); // 현재 스크롤 위치에 맞게 즉시 적용
+  }, 500); // 필요시 1000까지 조정 가능
+
+  // 리사이즈 이벤트도 반영
+  window.addEventListener('resize', () => {
+    updateTriggerOffset();
+    onScroll();
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
 });
+
 
 function bindModalToggle(triggerSelector) {
   const trigger = document.querySelector(triggerSelector);

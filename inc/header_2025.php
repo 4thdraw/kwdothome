@@ -1,14 +1,14 @@
 <?php
-define('C_DIR', '../../../_global');
+//define('C_DIR', '../../../_global');
 /*--- 템플릿 클래스 및 환경파일 호출 ===*/
-include C_DIR.'/conf_basic.php';
-$FUNC = new basicFunc();
+//include C_DIR.'/conf_basic.php';
+//$FUNC = new basicFunc();
 //if($_SERVER['REMOTE_ADDR']=='211.32.149.136') {
 //	ini_set('display_errors', 1);
 //}
 /*--- DB 클래스 호출 및 생성 ===*/
-include C_DIR.'/class_db.php';
-$SQL = new basicSql(C_DIR.'/ini_basic', false);
+//include C_DIR.'/class_db.php';
+//$SQL = new basicSql(C_DIR.'/ini_basic', false);
 ?>
 <!DOCTYPE html>
 <html lang="ko">

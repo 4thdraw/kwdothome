@@ -10,7 +10,7 @@
 				</strong>
 				
 			</h2>
-			<a href="../product/product_custom.php" class="btn   fs-20 fw500">+ 전체보기</a>
+			<a href="<?php echo $kw_url; ?>/page/board_list.php?boarden=Inquiries&board=견적문의" class="btn   fs-20 fw500">+ 전체보기</a>
 		</div>
 		<div>
 			<ul class='d-flex flex-column gap-2 fw500 fs-20 text-nowrap'>

@@ -72,7 +72,7 @@
 			</div>
 		</div>
 		<div class="d-flex justify-content-center py-lg-4 py-3">
-			<a href="" class="border border-dark px-5 py-2 fs-18 fw500  text-center rounded-5 mt-3">시공사례 전체보기</a>
+			<a href="<?php echo $kw_url; ?>/page/gallery_list.php?pronm=prd_all" class="border border-dark px-5 py-2 fs-18 fw500  text-center rounded-5 mt-3">시공사례 전체보기</a>
 		</div>
 
 	</div>

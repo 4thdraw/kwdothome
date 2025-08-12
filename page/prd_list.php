@@ -455,19 +455,15 @@ if(!empty($tmp_qstring2)) $tmp_qstring2 = '&'.$tmp_qstring2;
 					</ul>
 			</div>
 	 </div>
-	 <!-- 상품리스트			 -->
+	 <!-- 상품리스트 -->
 
 	<div class='border-bottom'>
 		
 	  
 		<div class='kw_wrap d-flex flex-column align-items-center max-width mx-auto px-3 px-xl-0 py-5 '>
-		
-		
-	
 		 
-		 <!--추천상품 리스트-->
-			<div class="subList row row-cols-2 row-cols-md-4 d-none">
-			
+		 	<!--추천상품 리스트-->
+			<div class="subList row row-cols-2 row-cols-md-4 d-none">		
 					
 			
 					<?php if($reco_result_array[1]['product_id']!=''){ ?>
