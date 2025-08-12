@@ -8,7 +8,8 @@
     <?php 
         $isActive = (isset($_GET['skey1']) && $_GET['skey1'] === $menuKey) ? 'border-active' : '';
         $isActiveText = (isset($_GET['skey1']) && $_GET['skey1'] === $menuKey) ? 'active-color' : '';
-        $firstSubmenuKey = array_key_first($item['submenus']);
+        $firstSubmenuKey = key($item['submenus']);
+
     ?>
         <a href="<?php echo $subnavilist['base_url']; ?>?skey1=<?php echo $menuKey; ?>&skey2=<?php echo $firstSubmenuKey; ?>"
         class="d-flex flex-column align-items-center gap-3 qurationitem col-lg col-3 quration-items<?php echo (array_search($item, $subnavilist['items']) + 1); ?> px-2 px-lg-2 px-xl-0 <?php echo ((array_search($item, $subnavilist['items']) >= 4) ? 'mt-4 mt-lg-0' : ''); ?>">

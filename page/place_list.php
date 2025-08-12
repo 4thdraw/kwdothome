@@ -17,14 +17,8 @@ $skey2=$_GET['skey2'];
  변수명은 상품변수명과 동일하게 처리해두었습니다. -->
 <?php include_once($kw_path."/inc/db/place_list.php"); ?>
 <?php include_once($kw_path."/inc/top_2025.php"); ?>
-
-<!--상품목록-->	
-
 <?php 
-     //if(defined('_PLACELIST_')){ 
-					// 공간별추천일때 노출
-					include_once($kw_path."/inc/placelist_navi.php");
-				// } 
+include_once($kw_path."/inc/placelist_navi.php");
 ?>
 <div class=' position-relative content_wrapper mainContentwrapper overflow-hidden'  >
 	<div data-info='퀵메뉴와 형제컨텐츠 : 페이지내의 컨텐츠 레퍼'>
@@ -57,22 +51,24 @@ $skey2=$_GET['skey2'];
 					
 					<ul class='d-flex gap-3 text-nowrap'>
 						<li>
-							<a href="<?php echo $kw_url; ?>/page/place_list.php?skey1=<?php echo substr($data['class_code'],0,3);?>" class="smn rounded-pill px-3 py-2 <?php if($_GET['skey2']==""){ echo "_s"; } ?>">전체</a>
+							<a href="<?php echo $kw_url; ?>/page/place_list.php?skey1=<?php echo substr($data['class_code'],0,3);?>" 
+							class="smn rounded-pill px-3 py-2 <?php if($_GET['skey2']==""){ echo "_s"; } ?>">전체</a>
 					
 						</li>
 						<?php
 
 						
 						// submenus 배열에서 $class_mid_arr 만들기
-						$class_mid_arr = [];
-						if (isset($subnavilist['items'][$skey1]['submenus'])) {
-							foreach ($subnavilist['items'][$skey1]['submenus'] as $code => $menu) {
-								$class_mid_arr[] = [
-									'class_code' => $code,
-									'class_name' => $menu['menunm']
-								];
-							}
-						}
+						$class_mid_arr = array();
+if (isset($subnavilist['items'][$skey1]['submenus'])) {
+    foreach ($subnavilist['items'][$skey1]['submenus'] as $code => $menu) {
+        $class_mid_arr[] = array(
+            'class_code' => $code,
+            'class_name' => $menu['menunm']
+        );
+    }
+}
+
 
 						// 출력
 						if (count($class_mid_arr) > 0) {
@@ -80,8 +76,9 @@ $skey2=$_GET['skey2'];
 								
 						?>
 						<li>
-							<a href="<?php echo $kw_url; ?>/page/prd_list.php?skey1=<?php echo $skey1; ?>&skey2=<?php echo $data['class_code']; ?>"
-							class="smn rounded-pill px-3 py-2 <?php echo ($skey2 == $data['class_code']) ? 'active-bg text-white' : ''; ?>">
+							
+							<a href="<?php echo $kw_url; ?>/page/place_list.php?skey1=<?php echo $skey1; ?>&skey2=<?php echo $data['class_code']; ?>"
+							class="smn rounded-pill px-3 py-2 <?php  echo ($skey2 == $data['class_code']) ? 'active-bg text-white' : ''; ?>">
 							<?php echo $data['class_name']; ?>
 							</a>
 						</li>

@@ -52,7 +52,12 @@ include_once("../config.php"); ?>
 <div class='max-width d-flex mx-auto  position-relative mainContentwrapper mb-5'  >
 	<div class='kw_wrap w-100'>
 	<!-- 가상DB // 테이블이 같은 구조일 것으로 예상하여 하나로 매트상식,공지사항, 견적문의 스킨만 다르게 진행-->
-	<?php include_once($kw_path."/inc/db/inquiries_list.php"); ?>
+	<?php 
+	// 페이지 상단에 아래 코드 추가 (개발용)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+	include_once($kw_path."/inc/db/inquiries_list.php"); ?>
 
 		<ul class="inquiry-list board-list  fs-16 fw600 ">
 		       <li class='d-flex  justify-content-between active-bg text-white px-3'>
@@ -72,20 +77,20 @@ include_once("../config.php"); ?>
 					</div>
 				</li>
 
-			<?php foreach ($inquiries as $inq): ?>
-				<li class='d-flex justify-content-between px-3'>
+			<?php  foreach ($inquiries as $inq): ?>
+				<li class='d-flex justify-content-between px-3 border-bottom '>
 					<div class="inquiry-header  col-2 py-3">
-						<span><?= $inq['no'] ?></span>
-						<span class="status <?= $inq['status'] ?>"><?= $inq['status'] ?></span>
+						<span><?php echo $inq['no']; ?></span>
+						<span class="status <?php echo $inq['status']; ?>"><?php echo $inq['status']; ?></span>
 					</div>
 
-					<div class="inquiry-title inquiry-title flex-grow-1 line-height-1-6 "><?= htmlspecialchars($inq['title']) ?></div>
+					<div class="inquiry-title inquiry-title flex-grow-1 line-height-1-6 "><?php echo $inq['title']; ?></div>
 
 					<div class="inquiry-meta d-flex col-4">
-						<span><?= $inq['category'] ?></span>
-						<span>작성자: <?= $inq['author'] ?></span>
-						<span>작성일: <?= $inq['date'] ?></span>
-						<span>조회수: <?= $inq['views'] ?></span>
+						<span><?php echo $inq['category']; ?></span>
+						<span>작성자: <?php echo $inq['author']; ?></span>
+						<span>작성일: <?php echo $inq['date']; ?></span>
+						<span>조회수: <?php echo $inq['views']; ?></span>
 					</div>
 				</li>
 			<?php endforeach; ?>
